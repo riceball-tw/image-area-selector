@@ -1,0 +1,96 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --rounded: 0.2rem;
+  --rounded-lg: 0.4rem;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 135px;
+}
+
+.window {
+  --height-window-bar: 56px;
+  position: relative;
+  max-width: 433px;
+  height: 792px;
+  width: 100%;
+  background-color: #f4f9fa;
+	box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  border-radius: var(--rounded);
+  padding-left: 39px;
+  padding-right: 39px;
+  padding-top: calc(var(--height-window-bar) + 39px);
+  padding-bottom: 39px;
+}
+
+/* Window TopBar */
+.window::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--height-window-bar);
+  background-color: #ebf0f3;
+}
+
+/* Window Button */
+.window::after {
+  --size: 24px;
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: var(--size);
+  height: var(--size);
+  background-color: #d4dade;
+  border-radius: calc(infinity * 1px);
+}
+
+.imageUploader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #dadadf;
+  color: #a2a8ac;
+  background-color: white;
+  padding: 3rem;
+  border-radius: var(--rounded-lg);
+  cursor: pointer;
+}
+
+.terminal {
+  max-width: 548px;
+  height: 703px;
+  width: 100%;
+  background-color: #2a3948;
+  color: white;
+  padding: 2rem;
+  border-radius: var(--rounded);
+}
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
