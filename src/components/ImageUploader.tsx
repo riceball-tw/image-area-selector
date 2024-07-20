@@ -62,6 +62,8 @@ export default function ImageUploader({
     if (!isChanging) {
       return (
         <div key={areaNumber}>
+          {/* Area Number */}
+          {<div className="areaNumber">{areaNumber}</div>}
           {/* Delete Area Button */}
           <FloatButton
             handleAction={() => {
