@@ -1,5 +1,5 @@
-import { type IArea } from "@bmunozg/react-image-area";
+import type { AreaInfo } from "@type/ImageSelector";
 
-export default function Terminal({ areas }: { areas: IArea[] }) {
-  return <div className="terminal">{JSON.stringify(areas)}</div>;
+export default function Terminal({ areasInfo }: { areasInfo: AreaInfo[] }) {
+  return <div className="terminal">{JSON.stringify(areasInfo)}</div>;
 }

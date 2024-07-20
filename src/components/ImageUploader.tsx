@@ -6,15 +6,28 @@ import {
 } from "@bmunozg/react-image-area";
 import FloatButton from "@components/FloatButton";
 import { areAnyAreasOverlapping } from "@utility/2dCollisionDetection";
+import type { ImageDimension } from "@type/ImageSelector";
 
 export default function ImageUploader({
   areas,
   setAreas,
+  setImageDimensions,
 }: {
   areas: IArea[];
   setAreas: (areas: IArea[]) => void;
+  setImageDimensions: (dimensions: ImageDimension) => void;
 }) {
   const [file, setFile] = useState<string>("");
+
+  const handleImageLoad = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>,
+  ) => {
+    const previewImg = event.target as HTMLImageElement;
+    setImageDimensions({
+      width: previewImg.naturalWidth,
+      height: previewImg.naturalHeight,
+    });
+  };
 
   /**
    * Update Selection Areas when no areas are overlapping
@@ -86,7 +99,12 @@ export default function ImageUploader({
           onChange={handleSelectionChange}
           customAreaRenderer={customRender}
         >
-          <img className="previewImage" src={file} alt="Preview Image" />
+          <img
+            onLoad={handleImageLoad}
+            className="previewImage"
+            src={file}
+            alt="Preview Image"
+          />
         </AreaSelector>
       ) : (
         <label className="imageUploader">
