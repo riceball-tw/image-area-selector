@@ -7,6 +7,8 @@
   --rounded-lg: 0.4rem;
 
   --selection: #007bff;
+
+  --z-index-float-button: 1;
 }
 
 body {
@@ -89,6 +91,25 @@ body {
   color: white;
   padding: 2rem;
   border-radius: var(--rounded);
+}
+
+.floatButton {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: var(--z-index-float-button);
+  position: absolute;
+  right: 0;
+  color: #babdc4;
+  background-color: white;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--rounded);
+  transform: translateX(calc(100% + 0.5rem));
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 
