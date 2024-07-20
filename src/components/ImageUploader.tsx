@@ -21,7 +21,10 @@ export default function ImageUploader({
 }: ImageUploaderProps) {
   const [previewImageUrl, setPreviewImageUrl] = useState<string>("");
 
-  function handleImageLoad(
+  /**
+   * Set Preview Image Real Size
+   */
+  function handleSetPreviewImageRealSize(
     event: React.SyntheticEvent<HTMLImageElement, Event>,
   ) {
     const previewImg = event.target as HTMLImageElement;
@@ -40,11 +43,14 @@ export default function ImageUploader({
     }
   }
 
-  function handleSubmitImage(event: React.ChangeEvent<HTMLInputElement>) {
-    const files = event.target.files;
-    const filesExist = files && files.length > 0;
-    if (filesExist) {
-      const firstImage = files[0];
+  /**
+   * Set First File as Preview Image
+   */
+  function handleSetPreviewImage(event: React.ChangeEvent<HTMLInputElement>) {
+    const uploadedFiles = event.target.files;
+    const uploadedFilesExist = uploadedFiles && uploadedFiles.length > 0;
+    if (uploadedFilesExist) {
+      const firstImage = uploadedFiles[0];
       setPreviewImageUrl(URL.createObjectURL(firstImage));
     }
   }
@@ -62,7 +68,10 @@ export default function ImageUploader({
    *  Custom render function to display info inside the areas
    *  @url https://github.com/ByronMunozG/react-image-area?tab=readme-ov-file#optional-props
    */
-  function customRender({ isChanging, areaNumber }: IAreaRendererProps) {
+  function imageAreaSelectorCustomRender({
+    isChanging,
+    areaNumber,
+  }: IAreaRendererProps) {
     if (!isChanging) {
       return (
         <div key={areaNumber}>
@@ -75,6 +84,7 @@ export default function ImageUploader({
             }}
           >
             <div>
+              {/* Trash Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -100,13 +110,13 @@ export default function ImageUploader({
           unit="percentage"
           areas={selections}
           wrapperStyle={{
-            width: "100%",
+            width: "100%", // Make sure container is 100% width, so the image inside can scale properly
           }}
           onChange={handleSelectionChange}
-          customAreaRenderer={customRender}
+          customAreaRenderer={imageAreaSelectorCustomRender}
         >
           <img
-            onLoad={handleImageLoad}
+            onLoad={handleSetPreviewImageRealSize}
             className="previewImage"
             src={previewImageUrl}
             alt="Preview Image"
@@ -114,6 +124,7 @@ export default function ImageUploader({
         </AreaSelector>
       ) : (
         <label className="imageUploader">
+          {/* Image Icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -127,7 +138,7 @@ export default function ImageUploader({
           </svg>
           Upload image
           <input
-            onChange={handleSubmitImage}
+            onChange={handleSetPreviewImage}
             className="visually-hidden"
             type="file"
             accept="image/*"
