@@ -7,9 +7,14 @@ import {
 import FloatButton from "@components/FloatButton";
 import { areAnyAreasOverlapping } from "@utility/2dCollisionDetection";
 
-export default function ImageUploader() {
+export default function ImageUploader({
+  areas,
+  setAreas,
+}: {
+  areas: IArea[];
+  setAreas: (areas: IArea[]) => void;
+}) {
   const [file, setFile] = useState<string>("");
-  const [areas, setAreas] = useState<IArea[]>([]);
 
   /**
    * Update Selection Areas when no areas are overlapping

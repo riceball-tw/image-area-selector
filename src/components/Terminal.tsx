@@ -1,3 +1,5 @@
-export default function Terminal() {
-  return <div className="terminal">Terminal</div>;
+import { type IArea } from "@bmunozg/react-image-area";
+
+export default function Terminal({ areas }: { areas: IArea[] }) {
+  return <div className="terminal">{JSON.stringify(areas)}</div>;
 }
