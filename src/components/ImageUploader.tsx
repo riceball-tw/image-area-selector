@@ -21,15 +21,15 @@ export default function ImageUploader({
 }: ImageUploaderProps) {
   const [file, setFile] = useState<string>("");
 
-  const handleImageLoad = (
+  function handleImageLoad(
     event: React.SyntheticEvent<HTMLImageElement, Event>,
-  ) => {
+  ) {
     const previewImg = event.target as HTMLImageElement;
     setImageDimensions({
       width: previewImg.naturalWidth,
       height: previewImg.naturalHeight,
     });
-  };
+  }
 
   /**
    * Update Selection Areas when no areas are overlapping
@@ -50,19 +50,19 @@ export default function ImageUploader({
   }
 
   /**
+   * Remove Area By Given Area Number
+   */
+  function removeTargetArea(targetAreaNumber: number) {
+    setSelections(
+      selections.filter((_, index) => index + 1 !== targetAreaNumber),
+    );
+  }
+
+  /**
    *  Custom render function to display info inside the areas
    *  @url https://github.com/ByronMunozG/react-image-area?tab=readme-ov-file#optional-props
    */
-  const customRender = ({ isChanging, areaNumber }: IAreaRendererProps) => {
-    /**
-     * Remove Area By Given Area Number
-     */
-    function removeTargetArea(targetAreaNumber: number) {
-      setSelections(
-        selections.filter((_, index) => index + 1 !== targetAreaNumber),
-      );
-    }
-
+  function customRender({ isChanging, areaNumber }: IAreaRendererProps) {
     if (!isChanging) {
       return (
         <div key={areaNumber}>
@@ -91,7 +91,7 @@ export default function ImageUploader({
         </div>
       );
     }
-  };
+  }
 
   return (
     <>
