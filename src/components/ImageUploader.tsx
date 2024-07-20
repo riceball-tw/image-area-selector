@@ -27,8 +27,10 @@ export default function ImageUploader({
 
   function handleSubmitImage(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.target.files;
-    if (files) {
-      setFile(URL.createObjectURL(files[0]));
+    const filesExist = files && files.length > 0;
+    if (filesExist) {
+      const firstImage = files[0];
+      setFile(URL.createObjectURL(firstImage));
     }
   }
 
