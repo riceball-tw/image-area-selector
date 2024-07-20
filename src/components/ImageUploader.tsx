@@ -19,7 +19,7 @@ export default function ImageUploader({
   setSelections,
   setImageDimensions,
 }: ImageUploaderProps) {
-  const [file, setFile] = useState<string>("");
+  const [previewImageUrl, setPreviewImageUrl] = useState<string>("");
 
   function handleImageLoad(
     event: React.SyntheticEvent<HTMLImageElement, Event>,
@@ -45,7 +45,7 @@ export default function ImageUploader({
     const filesExist = files && files.length > 0;
     if (filesExist) {
       const firstImage = files[0];
-      setFile(URL.createObjectURL(firstImage));
+      setPreviewImageUrl(URL.createObjectURL(firstImage));
     }
   }
 
@@ -95,7 +95,7 @@ export default function ImageUploader({
 
   return (
     <>
-      {file ? (
+      {previewImageUrl ? (
         <AreaSelector
           unit="percentage"
           areas={selections}
@@ -108,7 +108,7 @@ export default function ImageUploader({
           <img
             onLoad={handleImageLoad}
             className="previewImage"
-            src={file}
+            src={previewImageUrl}
             alt="Preview Image"
           />
         </AreaSelector>
