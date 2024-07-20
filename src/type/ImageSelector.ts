@@ -1,4 +1,4 @@
-export interface AreaInfo {
+export interface SelectionInfo {
   x: number;
   y: number;
   width: number;

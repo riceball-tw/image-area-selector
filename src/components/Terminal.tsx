@@ -1,9 +1,9 @@
-import type { AreaInfo } from "@type/ImageSelector";
+import type { SelectionInfo } from "@type/ImageSelector";
 
 interface TerminalProps {
-  areasInfo: AreaInfo[];
+  selectionsInfo: SelectionInfo[];
 }
 
-export default function Terminal({ areasInfo }: TerminalProps) {
-  return <div className="terminal">{JSON.stringify(areasInfo)}</div>;
+export default function Terminal({ selectionsInfo }: TerminalProps) {
+  return <div className="terminal">{JSON.stringify(selectionsInfo)}</div>;
 }

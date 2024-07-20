@@ -24,7 +24,7 @@ export function App() {
           setImageDimensions={setImageDimension}
         />
       </Window>
-      <Terminal areasInfo={selectionsInfo} />
+      <Terminal selectionsInfo={selectionsInfo} />
     </div>
   );
 }

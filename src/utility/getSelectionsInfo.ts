@@ -1,7 +1,7 @@
-import type { ImageDimension, AreaInfo } from "@type/ImageSelector";
+import type { ImageDimension, SelectionInfo } from "@type/ImageSelector";
 
 export function getSelectionsInfo(
-  selections: AreaInfo[],
+  selections: SelectionInfo[],
   imageDimension: ImageDimension,
 ) {
   if (!imageDimension.width || !imageDimension.height) return [];
