@@ -4,6 +4,7 @@ export function getSelectionsInfo(
   selections: AreaInfo[],
   imageDimension: ImageDimension,
 ) {
+  if (!imageDimension.width || !imageDimension.height) return [];
   return selections.map((area) => {
     return {
       x: Math.round((area.x / 100) * imageDimension.width),
