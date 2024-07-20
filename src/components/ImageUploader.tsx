@@ -93,8 +93,8 @@ export default function ImageUploader({
         <AreaSelector
           unit="percentage"
           areas={areas}
-          globalAreaStyle={{
-            border: "1px solid var(--selection)",
+          wrapperStyle={{
+            width: "100%",
           }}
           onChange={handleSelectionChange}
           customAreaRenderer={customRender}
