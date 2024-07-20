@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
 
-export default function Window({ children }: { children: ReactNode }) {
+interface WindowProps {
+  children: ReactNode;
+}
+
+export default function Window({ children }: WindowProps) {
   return <div className="window">{children}</div>;
 }

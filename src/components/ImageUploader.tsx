@@ -8,15 +8,17 @@ import FloatButton from "@components/FloatButton";
 import { areAnyAreasOverlapping } from "@utility/2dCollisionDetection";
 import type { ImageDimension } from "@type/ImageSelector";
 
+interface ImageUploaderProps {
+  selections: IArea[];
+  setSelections: (selections: IArea[]) => void;
+  setImageDimensions: (dimensions: ImageDimension) => void;
+}
+
 export default function ImageUploader({
   selections,
   setSelections,
   setImageDimensions,
-}: {
-  selections: IArea[];
-  setSelections: (selections: IArea[]) => void;
-  setImageDimensions: (dimensions: ImageDimension) => void;
-}) {
+}: ImageUploaderProps) {
   const [file, setFile] = useState<string>("");
 
   const handleImageLoad = (
