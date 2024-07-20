@@ -7,13 +7,16 @@ import { type IArea } from "@bmunozg/react-image-area";
 import type { ImageDimension } from "@type/ImageSelector";
 
 export function App() {
-  const [areas, setAreas] = useState<IArea[]>([]);
+  const [selections, setSelections] = useState<IArea[]>([]);
   const [imageDimension, setImageDimension] = useState({
     width: 0,
     height: 0,
   });
 
-  const getAreasInfo = (areas: IArea[], imageDimension: ImageDimension) => {
+  const getSelectionsInfo = (
+    areas: IArea[],
+    imageDimension: ImageDimension,
+  ) => {
     return areas.map((area) => {
       return {
         x: Math.round((area.x / 100) * imageDimension.width),
@@ -24,18 +27,18 @@ export function App() {
     });
   };
 
-  const areasInfo = getAreasInfo(areas, imageDimension);
+  const selectionsInfo = getSelectionsInfo(selections, imageDimension);
 
   return (
     <div className="wrapper">
       <Window>
         <ImageUploader
-          areas={areas}
-          setAreas={setAreas}
+          selections={selections}
+          setSelections={setSelections}
           setImageDimensions={setImageDimension}
         />
       </Window>
-      <Terminal areasInfo={areasInfo} />
+      <Terminal areasInfo={selectionsInfo} />
     </div>
   );
 }

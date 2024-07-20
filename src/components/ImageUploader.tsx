@@ -9,12 +9,12 @@ import { areAnyAreasOverlapping } from "@utility/2dCollisionDetection";
 import type { ImageDimension } from "@type/ImageSelector";
 
 export default function ImageUploader({
-  areas,
-  setAreas,
+  selections,
+  setSelections,
   setImageDimensions,
 }: {
-  areas: IArea[];
-  setAreas: (areas: IArea[]) => void;
+  selections: IArea[];
+  setSelections: (selections: IArea[]) => void;
   setImageDimensions: (dimensions: ImageDimension) => void;
 }) {
   const [file, setFile] = useState<string>("");
@@ -34,7 +34,7 @@ export default function ImageUploader({
    */
   function handleSelectionChange(newSelectionAreas: IArea[]) {
     if (!areAnyAreasOverlapping(newSelectionAreas)) {
-      setAreas(newSelectionAreas);
+      setSelections(newSelectionAreas);
     }
   }
 
@@ -56,7 +56,9 @@ export default function ImageUploader({
      * Remove Area By Given Area Number
      */
     function removeTargetArea(targetAreaNumber: number) {
-      setAreas(areas.filter((_, index) => index + 1 !== targetAreaNumber));
+      setSelections(
+        selections.filter((_, index) => index + 1 !== targetAreaNumber),
+      );
     }
 
     if (!isChanging) {
@@ -94,7 +96,7 @@ export default function ImageUploader({
       {file ? (
         <AreaSelector
           unit="percentage"
-          areas={areas}
+          areas={selections}
           wrapperStyle={{
             width: "100%",
           }}
