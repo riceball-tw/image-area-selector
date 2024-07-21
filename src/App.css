@@ -132,6 +132,23 @@ body {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+/*
+  !WHY USING !important?
+
+  react-image-area package didn't provide any way to customize selection handle style. 
+  Instead of rebuild the whole package, I think the most simple way is to overwrite the style using !important.
+  Not the most ideal but sensable move! 
+
+  Related Source Code:
+  @url https://github.com/ByronMunozG/react-image-area/blob/main/src/components/Area/Handles.tsx
+*/
+/* react-image-area Selection Edge Handle */
+[data-dir] {
+  background: var(--selection);
+  outline: 0!important;
+  border: 0!important;
+}
+
 
 .visually-hidden {
   position: absolute;

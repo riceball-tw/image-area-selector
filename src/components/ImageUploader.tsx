@@ -121,6 +121,10 @@ export default function ImageUploader({
           wrapperStyle={{
             width: "100%", // Make sure container is 100% width, so the image inside can scale properly
           }}
+          globalAreaStyle={{
+            border: "2px solid var(--selection)",
+            outline: "0",
+          }}
           onChange={handleSelectionChange}
           customAreaRenderer={imageAreaSelectorCustomRender}
         >
