@@ -49,9 +49,18 @@ export default function ImageUploader({
   function handleSetPreviewImage(event: React.ChangeEvent<HTMLInputElement>) {
     const uploadedFiles = event.target.files;
     const uploadedFilesExist = uploadedFiles && uploadedFiles.length > 0;
-    if (uploadedFilesExist) {
-      const firstImage = uploadedFiles[0];
-      setPreviewImageUrl(URL.createObjectURL(firstImage));
+    if (!uploadedFilesExist) return;
+    const firstFile = uploadedFiles[0];
+    const isAcceptableImageFile = (file: File) =>
+      ["image/jpeg", "image/png", "image/gif", "image/webp"].includes(
+        file.type,
+      );
+    if (isAcceptableImageFile(firstFile)) {
+      setPreviewImageUrl(URL.createObjectURL(firstFile));
+    } else {
+      alert(
+        "Please upload an acceptable image file. (jpeg / png / gif / webp)",
+      );
     }
   }
 
